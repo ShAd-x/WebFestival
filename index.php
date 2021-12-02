@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../includes/flight-master/flight/Flight.php';
 // Load Smarty library
 require '../../includes/smarty-3.1.35/libs/Smarty.class.php';

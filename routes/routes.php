@@ -118,6 +118,10 @@ Flight::route('POST /login', function() {
     }
 });
 
+Flight::route('GET /candidature', function(){
+    Flight::render("candidature.tpl",array());
+});
+
 Flight::route('GET /profil', function(){
         Flight::render("profil.tpl",array());
 });

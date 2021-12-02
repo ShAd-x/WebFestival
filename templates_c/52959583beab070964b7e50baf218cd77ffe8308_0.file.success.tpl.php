@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-12-02 10:00:06
+/* Smarty version 3.1.34-dev-7, created on 2021-12-02 16:30:43
   from 'C:\Users\alexi\OneDrive\Cours\SEMESTRE 3\Web\tps\projet_festival\templates\success.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_61a899267b8ac9_12707243',
+  'unifunc' => 'content_61a8f4b38b40b4_91728858',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52959583beab070964b7e50baf218cd77ffe8308' => 
     array (
       0 => 'C:\\Users\\alexi\\OneDrive\\Cours\\SEMESTRE 3\\Web\\tps\\projet_festival\\templates\\success.tpl',
-      1 => 1638439203,
+      1 => 1638462631,
       2 => 'file',
     ),
   ),
@@ -20,45 +20,40 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61a899267b8ac9_12707243 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61a8f4b38b40b4_91728858 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-echo '<?php
-    ';?>
-session_start();
-    $id_session = session_id();
-<?php echo '?>';?>
-
+?>
 <html>
 <head>
     <title><?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18253067661a899267af573_95274243', 'title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_136831008261a8f4b38a5a08_78154487', 'title');
 ?>
 </title>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9984256261a899267b0368_79590094', 'head');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_128137693761a8f4b38a6625_33625635', 'head');
 ?>
 
 </head>
 <body>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_181729430661a899267b0d91_54909105', 'menu');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_180781046261a8f4b38a7050_03780018', 'menu');
 ?>
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_201867038861a899267b8253_46375036', 'body');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_79408881361a8f4b38b3813_15418118', 'body');
 ?>
 
 </body>
 </html>
 <?php }
 /* {block 'title'} */
-class Block_18253067661a899267af573_95274243 extends Smarty_Internal_Block
+class Block_136831008261a8f4b38a5a08_78154487 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'title' => 
   array (
-    0 => 'Block_18253067661a899267af573_95274243',
+    0 => 'Block_136831008261a8f4b38a5a08_78154487',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -68,12 +63,12 @@ Réussite<?php
 }
 /* {/block 'title'} */
 /* {block 'head'} */
-class Block_9984256261a899267b0368_79590094 extends Smarty_Internal_Block
+class Block_128137693761a8f4b38a6625_33625635 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'head' => 
   array (
-    0 => 'Block_9984256261a899267b0368_79590094',
+    0 => 'Block_128137693761a8f4b38a6625_33625635',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -89,27 +84,19 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'head'} */
 /* {block 'menu'} */
-class Block_181729430661a899267b0d91_54909105 extends Smarty_Internal_Block
+class Block_180781046261a8f4b38a7050_03780018 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'menu' => 
   array (
-    0 => 'Block_181729430661a899267b0d91_54909105',
+    0 => 'Block_180781046261a8f4b38a7050_03780018',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-    <?php echo '<?php
-        ';?>
-if($id_session){
-            echo 'ID de session (récupéré via session_id()) : '
-            . $id_session;
-        }
-    <?php echo '?>';?>
-
     <a href='./'>Accueil</a>
-    <?php if (((isset($_smarty_tpl->tpl_vars['_SESSION']->value['user'])))) {?>
+    <?php if (((isset($_smarty_tpl->tpl_vars['_SESSION']->value["user"])))) {?>
         <a href='profil'>Profil</a>
         <a href='deco'>Déconnexion</a>
     <?php } else { ?>
@@ -121,12 +108,12 @@ if($id_session){
 }
 /* {/block 'menu'} */
 /* {block 'body'} */
-class Block_201867038861a899267b8253_46375036 extends Smarty_Internal_Block
+class Block_79408881361a8f4b38b3813_15418118 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_201867038861a899267b8253_46375036',
+    0 => 'Block_79408881361a8f4b38b3813_15418118',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

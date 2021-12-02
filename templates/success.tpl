@@ -1,7 +1,3 @@
-<?php
-    session_start();
-    $id_session = session_id();
-?>
 <html>
 <head>
     <title>{block name=title}Réussite{/block}</title>
@@ -15,14 +11,8 @@
 </head>
 <body>
     {block name=menu}
-    <?php
-        if($id_session){
-            echo 'ID de session (récupéré via session_id()) : '
-            . $id_session;
-        }
-    ?>
     <a href='./'>Accueil</a>
-    {if (isset($_SESSION['user']))}
+    {if (isset($_SESSION["user"]))}
         <a href='profil'>Profil</a>
         <a href='deco'>Déconnexion</a>
     {else}
