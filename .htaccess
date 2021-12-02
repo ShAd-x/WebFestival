@@ -1,0 +1,5 @@
+RewriteEngine On
+#fonctionne sans... RewriteBase /Web/M3104/corrections/TP4
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
