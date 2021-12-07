@@ -74,6 +74,11 @@ Flight::route('POST /register', function(){
 
 Flight::route('GET /login', function(){
     Flight::render("login.tpl",array());
+    if(isset($_SESSION['user'])) {
+        echo "Connecté";
+    } else {
+        echo "Déconnecté";
+    }
 });
 
 Flight::route('POST /login', function() {
@@ -107,10 +112,10 @@ Flight::route('POST /login', function() {
 
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
-        Flight::redirect('/');
+        $_SESSION['user'] = $data->mail;
+        Flight::redirect('success');
     // Sinon (donc au moins un message d'erreur)
     } else {
-        $_SESSION['user'] = $data->mail;
         Flight::render("login.tpl", array(
             'messages' => $messages,
             'valeurs' => $_POST
@@ -118,12 +123,46 @@ Flight::route('POST /login', function() {
     }
 });
 
-Flight::route('GET /candidature', function(){
-    Flight::render("candidature.tpl",array());
+Flight::route('GET /logout', function(){
+    session_destroy();
+    Flight::redirect('/');
 });
 
-Flight::route('GET /profil', function(){
-        Flight::render("profil.tpl",array());
+Flight::route('POST /candidature', function(){
+    $data = Flight::request()->data;
+    $messages = array();
+
+    if(empty(trim($data->nomgr))){
+        $messages['nomgr'] = "Nom du groupe obligatoire";
+    }
+
+    if(empty(trim($data->representantnom))){
+        $messages['representantnom'] = "Nom du représentant obligatoire";
+    }
+
+    if(empty(trim($data->representantprenom))){
+        $messages['representantprenom'] = "Prénom du représentant obligatoire";
+    }
+
+    // S'il n'y a aucun message d'erreur
+    if(count($messages) <= 0){
+        $_SESSION['user'] = $data->mail;
+        Flight::redirect('success');
+        // Sinon (donc au moins un message d'erreur)
+    } else {
+        Flight::render("candidature.tpl", array(
+            'messages' => $messages,
+            'valeurs' => $_POST
+        ));
+    }
+});
+
+Flight::route('GET /candidature', function(){
+    if(isset($_SESSION['user'])) {
+        Flight::render("candidature.tpl", array());
+    } else {
+        Flight::redirect('/register');
+    }
 });
 
 Flight::route('GET /success', function(){

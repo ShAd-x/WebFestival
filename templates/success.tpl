@@ -12,17 +12,14 @@
 <body>
     {block name=menu}
     <a href='./'>Accueil</a>
-    {if (isset($_SESSION["user"]))}
-        <a href='profil'>Profil</a>
-        <a href='deco'>Déconnexion</a>
-    {else}
-        <a href='register'>Inscription</a>
-        <a href='login'>Connexion</a>
-    {/if}
+    <a href='candidature'>Candidature</a>
+    <a href='register'>Inscription</a>
+    <a href='login'>Connexion</a>
+    <a href='logout'>Déconnexion</a>
     {/block}
     {block name=body}
-        <p>Inscription réussi</p>
-        <a href='#'>S'inscrire au festival</a>
+    <p>Inscription réussi</p>
+    <a href='candidature'>S'inscrire au festival</a>
     {/block}
 </body>
 </html>
