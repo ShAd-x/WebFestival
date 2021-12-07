@@ -24,5 +24,8 @@ Flight::map('render', function($template, $data){
     Flight::view()->display($template);
 });
 
+if (isset($_SESSION["user"]))
+    Flight::view()->assign("_session_",$_SESSION["user"]);
+
 require "routes/routes.php";
 Flight::start();

@@ -74,11 +74,6 @@ Flight::route('POST /register', function(){
 
 Flight::route('GET /login', function(){
     Flight::render("login.tpl",array());
-    if(isset($_SESSION['user'])) {
-        echo "Connecté";
-    } else {
-        echo "Déconnecté";
-    }
 });
 
 Flight::route('POST /login', function() {
@@ -113,7 +108,7 @@ Flight::route('POST /login', function() {
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $_SESSION['user'] = $data->mail;
-        Flight::redirect('success');
+        Flight::redirect('/');
     // Sinon (donc au moins un message d'erreur)
     } else {
         Flight::render("login.tpl", array(

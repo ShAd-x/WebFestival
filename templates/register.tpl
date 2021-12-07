@@ -1,8 +1,8 @@
 {extends file='success.tpl'}
 {block name=title}Inscription{/block}
 {block name=body}
-<h1>Création de compte sur le site du Festival d'Amiens</h1>
 <div id='main'>
+<h1>Création de compte</h1>
 <form class="pure-form pure-form-stacked" action="register" method="post">
     <fieldset>
         <legend>Inscription</legend>

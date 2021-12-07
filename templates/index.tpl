@@ -4,9 +4,9 @@
 <div id='main'>
     <h1>Accueil</h1>
     <p>Bienvenue sur le site du festival d'Amiens !</p>
-    {if (isset($_SESSION['user']))}
-        <p>Déjà inscris sur le site ? Inscrivez vous au festival !
-            <a href="#">S'inscrire au festival</a>
+    {if (isset($_session_))}
+        <p>Pas encore inscris au festival ? Inscrivez vous dès maintenant !
+            <a href="candidature">S'inscrire au festival</a>
         </p>
     {else}
         <p>Vous souhaitez participer au festival ?
@@ -15,5 +15,7 @@
             <a href="login">Se connecter</a>
         </p>
     {/if}
+    <br><br>
+    <p>Les candidatures déjà déposées :</p>
 </div>
 {/block}
