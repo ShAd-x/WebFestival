@@ -135,7 +135,7 @@
                 <span>{$messages.annee_crea|escape|default:''}</span>
 
                 <label for="presentation">Présentation</label>
-                <input type="text" value="{$valeurs.presentation|escape|default:''}" id="presentation" name="presentation" placeholder="Courte présentation"/>
+                <input type="text" value="{$valeurs.presentation|escape|default:''}" id="presentation" name="presentation" maxlength="500" placeholder="Courte présentation"/>
                 <span>{$messages.presentation|escape|default:''}</span>
 
                 <label for="exp">Expérience</label>

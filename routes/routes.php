@@ -139,6 +139,10 @@ Flight::route('POST /candidature', function(){
         $messages['representantprenom'] = "Prénom du représentant obligatoire";
     }
 
+    if(empty(trim($data->annee_crea))){ 
+        $messages['annee_crea'] = "Année de création obligatoire";
+    }
+
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $_SESSION['user'] = $data->mail;
