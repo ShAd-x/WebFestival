@@ -7,11 +7,13 @@
             <fieldset>
                 <legend>Formulaire</legend>
 
-                <label for="nomgr">Nom du groupe :</label>
+                <p style="color:red">Les champs marqué d'une '*' sont obligatoires</p>
+
+                <label for="nomgr">Nom du groupe* :</label>
                 <input type="text" value="{$valeurs.nomgr|escape|default:''}" id="nomgr" name="nomgr" placeholder="Nom du groupe"/>
                 <span>{$messages.nomgr|escape|default:''}</span>
 
-                <label for="departement">Département :</label>
+                <label for="departement">Département* :</label>
                 <select>
                     <option value="1">1 - Ain</option>
                     <option value="2">2 - Aisne</option>
@@ -116,51 +118,63 @@
                     <option value="976">976 - Mayotte</option>
                 </select>
 
-                <label for="type">Type de scène :</label>
+                <label for="type">Type de scène* :</label>
                 <select>
                     <option value="1">1 - Tribute</option>
                     <option value="2">2 - Acoustique/Folk</option>
                     <option value="3">3 - Amplifié/Rock</option>
                 </select>
 
-                <label for="representant">Représentant du groupe :</label>
+                <label for="representant">Représentant du groupe* :</label>
                 <input type="text" value="{$valeurs.representantnom|escape|default:''}" id="representantnom" name="representantnom" placeholder="Nom du représentant"/>
                 <span>{$messages.representantnom|escape|default:''}</span>
 
                 <input type="text" value="{$valeurs.representantprenom|escape|default:''}" id="representantprenom" name="representantprenom" placeholder="Prénom du représentant"/>
                 <span>{$messages.representantprenom|escape|default:''}</span>
-                
-                <label for="annee_crea">Année de création :</label>
+
+                <input type="text" value="{$valeurs.representantadresse|escape|default:''}" id="representantadresse" name="representantadresse" placeholder="Adresse du représentant"/>
+                <span>{$messages.representantadresse|escape|default:''}</span>
+
+                <input type="text" value="{$valeurs.representantcodepostal|escape|default:''}" id="representantcodepostal" name="representantcodepostal" placeholder="Code postal du représentant"/>
+                <span>{$messages.representantcodepostal|escape|default:''}</span>
+
+                <input type="text" value="{$valeurs.representantemail|escape|default:''}" id="representantemail" name="representantemail" placeholder="Mail du représentant"/>
+                <span>{$messages.representantemail|escape|default:''}</span>
+
+                <input type="text" value="{$valeurs.representanttel|escape|default:''}" id="representanttel" name="representanttel" placeholder="Numéro du représentant"/>
+                <span>{$messages.representanttel|escape|default:''}</span>
+
+                <label for="annee_crea">Année de création* :</label>
                 <input type="text" value="{$valeurs.annee_crea|escape|default:''}" id="annee_crea" name="annee_crea" placeholder="Année de création"/>
                 <span>{$messages.annee_crea|escape|default:''}</span>
 
-                <label for="presentation">Courte présentation</label>
+                <label for="presentation">Courte présentation* :</label>
                 <textarea required placeholder="{$valeurs.presentation|escape|default:''}" id="presentation" name="presentation" maxlength="500"></textarea>
                 <span>{$messages.presentation|escape|default:''}</span>
 
-                <label for="exp">Expérience scéniques</label>
+                <label for="exp">Expérience scéniques* :</label>
                 <textarea required placeholder="{$valeurs.exp|escape|default:''}" id="exp" name="exp" maxlength="500"></textarea>
                 <span>{$messages.exp|escape|default:''}</span>
 
-                <label for="network">Site ou page Facebook</label>
+                <label for="network">Site ou page Facebook :</label>
                 <input type="text" value="{$valeurs.network|escape|default:''}" id="network" name="network" placeholder="Site ou page Facebook"/>
                 <span>{$messages.network|escape|default:''}</span>
 
-                <label for="soundcloud">SoundCloud</label>
+                <label for="soundcloud">SoundCloud :</label>
                 <input type="text" value="{$valeurs.soundcloud|escape|default:''}" id="soundcloud" name="soundcloud" placeholder="Lien vers un soundcloud"/>
                 <span>{$messages.soundcloud|escape|default:''}</span>
 
-                <label for="ytb">Youtube</label>
+                <label for="ytb">Youtube :</label>
                 <input type="text" value="{$valeurs.ytb|escape|default:''}" id="ytb" name="ytb" placeholder="Lien vers une chaîne Youtube"/>
                 <span>{$messages.ytb|escape|default:''}</span>
 
                 <!-- Mettre les 8 membres du groupe -->
-                <label for="membre1">Premier membre du groupe</label>
+                <label for="membre1">Premier membre du groupe* :</label>
                 <input type="text" value="{$valeurs.membre1|escape|default:''}" id="membre1" name="membre1" placeholder="Prénom du membre"/>
                 <input type="text" value="{$valeurs.membre1|escape|default:''}" id="membre1" name="membre1" placeholder="Prénom du membre"/>
                 <span>{$messages.membre1|escape|default:''}</span>
 
-                <label for="stat_assoc">Statut associatif</label>
+                <label for="stat_assoc">Statut associatif* :</label>
                 <div>
                     <label for="oui">Oui</label>
                     <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="oui" name="stat_assoc"/>
@@ -169,7 +183,7 @@
                 </div>
                 <span>{$messages.stat_assoc|escape|default:''}</span>
 
-                <label for="sacem">SACEM</label>
+                <label for="sacem">SACEM* :</label>
                 <div>
                     <label for="oui">Oui</label>
                     <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="oui" name="sacem"/>
@@ -178,7 +192,7 @@
                 </div>
                 <span>{$messages.sacem|escape|default:''}</span>
 
-                <label for="producteur">Producteur</label>
+                <label for="producteur">Producteur* :</label>
                 <div>
                     <label for="oui">Oui</label>
                     <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="oui" name="producteur"/>
@@ -187,7 +201,7 @@
                 </div>
                 <span>{$messages.producteur|escape|default:''}</span>
 
-                <label for="files">Fichiers mp3</label>
+                <label for="files">Fichiers mp3* :</label>
                 <div>
                     <input type="file" value="{$valeurs.files|escape|default:''}" id="first_file" name="files" placeholder="Premier fichier"/>
                     <input type="file" value="{$valeurs.files|escape|default:''}" id="second_file" name="files" placeholder="Deuxième fichier"/>
@@ -195,22 +209,22 @@
                 </div>
                 <span>{$messages.files|escape|default:''}</span>
               
-                <label for="dossier">Dossier de presse</label>
+                <label for="dossier">Dossier de presse :</label>
                 <input type="file" value="{$valeurs.dossier|escape|default:''}" id="dossier" name="dossier"/>
                 <span>{$valeurs.dossier|escape|default:''}</span>
 
-                <label for="photo_grp">Photo de groupe</label>
+                <label for="photo_grp">Photo de groupe* :</label>
                 <div>
                     <input type="file" value="{$valeurs.photo_grp|escape|default:''}" id="first_picture" name="photo_grp"/>
                     <input type="file" value="{$valeurs.photo_grp|escape|default:''}" id="second_picture" name="photo_grp"/>
                 </div>
                 <span>{$messages.photo_grp|escape|default:''}</span>
 
-                <label for="tech_file">Fiche technique</label>
+                <label for="tech_file">Fiche technique* :</label>
                 <input type="file" value="{$valeurs.tech_file|escape|default:''}" id="tech_file" name="tech_file"/>
                 <span>{$valeurs.tech_file|escape|default:''}</span>
 
-                <label for="sacem_file">Document SACEM</label>
+                <label for="sacem_file">Document SACEM* :</label>
                 <input type="file" value="{$valeurs.sacem_file|escape|default:''}" id="sacem_file" name="sacem_file"/>
                 <span>{$valeurs.sacem_file|escape|default:''}</span>
 
