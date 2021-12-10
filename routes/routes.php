@@ -143,6 +143,10 @@ Flight::route('POST /candidature', function(){
         $messages['annee_crea'] = "Année de création obligatoire";
     }
 
+    if(empty(trim($data->)))
+
+
+
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $_SESSION['user'] = $data->mail;

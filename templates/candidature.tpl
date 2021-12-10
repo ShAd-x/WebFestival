@@ -135,11 +135,11 @@
                 <span>{$messages.annee_crea|escape|default:''}</span>
 
                 <label for="presentation">Présentation</label>
-                <input type="text" value="{$valeurs.presentation|escape|default:''}" id="presentation" name="presentation" maxlength="500" placeholder="Courte présentation"/>
+                <textarea value="{$valeurs.presentation|escape|default:''}" id="presentation" name="presentation" maxlength="500" placeholder="Courte présentation"></textarea>
                 <span>{$messages.presentation|escape|default:''}</span>
 
                 <label for="exp">Expérience</label>
-                <input type="text" value="{$valeurs.exp|escape|default:''}" id="exp" name="exp" placeholder="Expérience potentielle"/>
+                <textarea value="{$valeurs.exp|escape|default:''}" id="exp" name="exp" maxlength="500" placeholder="Expérience potentielle"></textarea>
                 <span>{$messages.exp|escape|default:''}</span>
 
                 <label for="network">Site ou page Facebook</label>

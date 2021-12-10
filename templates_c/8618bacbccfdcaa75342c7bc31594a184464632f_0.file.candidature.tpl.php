@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-12-09 16:48:10
+/* Smarty version 3.1.34-dev-7, created on 2021-12-10 08:26:43
   from 'D:\Cours_de_2eme_annee\1er_semestre\DocRoot\tps\WebFestival\templates\candidature.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_61b2334a55a704_42258967',
+  'unifunc' => 'content_61b30f4310e849_17130515',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8618bacbccfdcaa75342c7bc31594a184464632f' => 
     array (
       0 => 'D:\\Cours_de_2eme_annee\\1er_semestre\\DocRoot\\tps\\WebFestival\\templates\\candidature.tpl',
-      1 => 1639068465,
+      1 => 1639124782,
       2 => 'file',
     ),
   ),
@@ -20,26 +20,26 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61b2334a55a704_42258967 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61b30f4310e849_17130515 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_70984381661b2334a53c363_25119894', 'title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_141499237961b30f43077db6_26621510', 'title');
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_124455092361b2334a53cd36_80647112', 'body');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9843439361b30f4307a525_99486019', 'body');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'success.tpl');
 }
 /* {block 'title'} */
-class Block_70984381661b2334a53c363_25119894 extends Smarty_Internal_Block
+class Block_141499237961b30f43077db6_26621510 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'title' => 
   array (
-    0 => 'Block_70984381661b2334a53c363_25119894',
+    0 => 'Block_141499237961b30f43077db6_26621510',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -49,12 +49,12 @@ Dépôt de candidature<?php
 }
 /* {/block 'title'} */
 /* {block 'body'} */
-class Block_124455092361b2334a53cd36_80647112 extends Smarty_Internal_Block
+class Block_9843439361b30f4307a525_99486019 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_124455092361b2334a53cd36_80647112',
+    0 => 'Block_9843439361b30f4307a525_99486019',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -202,14 +202,14 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 </span>
 
                 <label for="presentation">Présentation</label>
-                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['presentation'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="presentation" name="presentation" maxlength="500" placeholder="Courte présentation"/>
+                <textarea value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['presentation'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="presentation" name="presentation" maxlength="500" placeholder="Courte présentation"></textarea>
                 <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['presentation'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
                 <label for="exp">Expérience</label>
-                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="exp" name="exp" placeholder="Expérience potentielle"/>
+                <textarea value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="exp" name="exp" placeholder="Expérience potentielle"></textarea>
                 <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
