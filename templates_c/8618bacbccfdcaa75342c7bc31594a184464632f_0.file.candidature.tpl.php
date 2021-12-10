@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-12-10 08:26:43
+/* Smarty version 3.1.34-dev-7, created on 2021-12-10 11:19:55
   from 'D:\Cours_de_2eme_annee\1er_semestre\DocRoot\tps\WebFestival\templates\candidature.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_61b30f4310e849_17130515',
+  'unifunc' => 'content_61b337db9fcd40_67936680',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8618bacbccfdcaa75342c7bc31594a184464632f' => 
     array (
       0 => 'D:\\Cours_de_2eme_annee\\1er_semestre\\DocRoot\\tps\\WebFestival\\templates\\candidature.tpl',
-      1 => 1639124782,
+      1 => 1639134711,
       2 => 'file',
     ),
   ),
@@ -20,26 +20,26 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61b30f4310e849_17130515 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61b337db9fcd40_67936680 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_141499237961b30f43077db6_26621510', 'title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8517208561b337daed3012_54429659', 'title');
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9843439361b30f4307a525_99486019', 'body');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_93762203161b337daf41615_40865128', 'body');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'success.tpl');
 }
 /* {block 'title'} */
-class Block_141499237961b30f43077db6_26621510 extends Smarty_Internal_Block
+class Block_8517208561b337daed3012_54429659 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'title' => 
   array (
-    0 => 'Block_141499237961b30f43077db6_26621510',
+    0 => 'Block_8517208561b337daed3012_54429659',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -49,12 +49,12 @@ Dépôt de candidature<?php
 }
 /* {/block 'title'} */
 /* {block 'body'} */
-class Block_9843439361b30f4307a525_99486019 extends Smarty_Internal_Block
+class Block_93762203161b337daf41615_40865128 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'body' => 
   array (
-    0 => 'Block_9843439361b30f4307a525_99486019',
+    0 => 'Block_93762203161b337daf41615_40865128',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -201,15 +201,15 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                 <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['annee_crea'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
-                <label for="presentation">Présentation</label>
-                <textarea value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['presentation'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="presentation" name="presentation" maxlength="500" placeholder="Courte présentation"></textarea>
+                <label for="presentation">Courte présentation</label>
+                <textarea required placeholder="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['presentation'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="presentation" name="presentation" maxlength="500"></textarea>
                 <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['presentation'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
-                <label for="exp">Expérience</label>
-                <textarea value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="exp" name="exp" placeholder="Expérience potentielle"></textarea>
+                <label for="exp">Expérience scéniques</label>
+                <textarea required placeholder="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="exp" name="exp" maxlength="500"></textarea>
                 <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
@@ -220,80 +220,73 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 </span>
 
                 <label for="soundcloud">SoundCloud</label>
-                <input type="soundcloud" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['soundcloud'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['soundcloud'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="soundcloud" name="soundcloud" placeholder="Lien vers un soundcloud"/>
                 <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['soundcloud'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
                 <label for="ytb">Youtube</label>
-                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['ytb'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="ytb" name="ytb" placeholder="Lien vers une chaîne Youtube"/>
-                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['exp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['ytb'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
 
                 <!-- Mettre les 8 membres du groupe -->
+                <label for="membre1">Premier membre du groupe</label>
+                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['membre1'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="membre1" name="membre1" placeholder="Prénom du membre"/>
+                <input type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['membre1'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="membre1" name="membre1" placeholder="Prénom du membre"/>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['membre1'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+</span>
 
                 <label for="stat_assoc">Statut associatif</label>
                 <div>
-                    <div>
-                        <label for="oui">Oui</label>
-                        <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="oui" name="stat_assoc"/>         
-                    </div>
-                    <div>
-                        <label for="non">Non</label>  
-                        <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <label for="oui">Oui</label>
+                    <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="oui" name="stat_assoc"/>
+                    <label for="non">Non</label>
+                    <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="non" name="stat_assoc"/>
-                    </div>
-                    <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-</span>
                 </div>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+</span>
 
                 <label for="sacem">SACEM</label>
                 <div>
-                    <div>
-                        <label for="oui">Oui</label>
-                        <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="oui" name="sacem"/>             
-                    </div>
-                    <div>
-                        <label for="non">Non</label> 
-                        <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <label for="oui">Oui</label>
+                    <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="oui" name="sacem"/>
+                    <label for="non">Non</label>
+                    <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="non" name="sacem"/>
-                    </div>
-                    <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['sacem'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-</span>
                 </div>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['sacem'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+</span>
 
                 <label for="producteur">Producteur</label>
                 <div>
-                    <div>
-                        <label for="oui">Oui</label>
-                        <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" id="oui" name="producteur"/>             
-                    </div>
-                    <div>
-                        <label for="non">Non</label> 
-                        <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <label for="oui">Oui</label>
+                    <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" id="oui" name="producteur"/>
+                    <label for="non">Non</label>
+                    <input type="radio" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['stat_assoc'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="non" name="producteur"/>
-                    </div>
-                    <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['producteur'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-</span>
                 </div>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['producteur'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+</span>
 
                 <label for="files">Fichiers mp3</label>
                 <div>
-                    <div>
-                        <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="first_file" name="files" placeholder="Premier fichier"/>
-                        <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="second_file" name="files" placeholder="Deuxième fichier"/>
-                        <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="third_file" name="files" placeholder="Troisième fichier"/>
-                    </div>
-                    <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-</span>
                 </div>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['files'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+</span>
               
                 <label for="dossier">Dossier de presse</label>
                 <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['dossier'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
@@ -303,15 +296,13 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
                 <label for="photo_grp">Photo de groupe</label>
                 <div>
-                    <div>
-                        <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['photo_grp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['photo_grp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="first_picture" name="photo_grp"/>
-                        <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['photo_grp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                    <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['photo_grp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " id="second_picture" name="photo_grp"/>
-                    </div>
-                    <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['photo_grp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+                </div>
+                <span><?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['messages']->value['photo_grp'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 </span>
-                </div>                
 
                 <label for="tech_file">Fiche technique</label>
                 <input type="file" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['valeurs']->value['tech_file'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>

@@ -169,6 +169,14 @@ Flight::route('POST /candidature', function(){
         $messages['ytb'] = "Lien youtube invalide";
     }
 
+
+
+    $info = new SplFileInfo('foo.txt');
+    var_dump($info->getExtension());
+    // Il faut récupérer au lieu du foo.txt le fichier du candidat
+
+    
+
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $_SESSION['user'] = $data->mail;
