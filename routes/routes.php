@@ -143,6 +143,32 @@ Flight::route('POST /candidature', function(){
         $messages['annee_crea'] = "Année de création obligatoire";
     }
 
+    if(empty(trim($data->presentation))){
+        $messages['presentation'] = "Présentation du groupe obligatoire";
+    } else if(strlen($data->presentation) < 20){
+        $messages['presentation'] = "Veuillez nous en dire un peu plus svp";
+    }
+
+    if(empty(trim($data->exp))){
+        $messages['exp'] = "Expérience scéniques du groupe obligatoire";
+    } else if(strlen($data->exp) < 20){
+        $messages['exp'] = "Veuillez nous en dire un peu plus svp";
+    }
+
+    if(empty(trim($data->network))){
+        $messages['network'] = "Site ou page Facebook du groupe obligatoire";
+    } else if(!filter_var($data->network, FILTER_VALIDATE_URL)){
+        $messages['network'] = "Lien du groupe invalide";
+    }
+
+    if(!empty(trim($data->soundcloud)) && !filter_var($data->soundcloud, FILTER_VALIDATE_URL)){
+        $messages['soundcloud'] = "Lien soundcloud invalide";
+    }
+
+    if(!empty(trim($data->ytb)) && !filter_var($data->ytb, FILTER_VALIDATE_URL)){
+        $messages['ytb'] = "Lien youtube invalide";
+    }
+
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $_SESSION['user'] = $data->mail;
