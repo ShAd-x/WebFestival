@@ -130,56 +130,74 @@ Flight::route('POST /candidature', function(){
     if(empty(trim($data->nomgr))){
         $messages['nomgr'] = "Nom du groupe obligatoire";
     }
-
     if(empty(trim($data->representantnom))){
         $messages['representantnom'] = "Nom du représentant obligatoire";
     }
-
     if(empty(trim($data->representantprenom))){
         $messages['representantprenom'] = "Prénom du représentant obligatoire";
     }
-
+    if(empty(trim($data->representantadresse))){
+        $messages['representantadresse'] = "Adresse du représentant obligatoire";
+    }
+    if(empty(trim($data->representantcodepostal))){
+        $messages['representantcodepostal'] = "Code postal du représentant obligatoire";
+    }
+    if(empty(trim($data->representantemail))){
+        $messages['representantemail'] = "Mail du représentant obligatoire";
+    }
+    if(empty(trim($data->representanttel))){
+        $messages['representanttel'] = "Numéro du représentant obligatoire";
+    }
+    if(empty(trim($data->style))){
+        $messages['style'] = "Style musical du groupe obligatoire";
+    }
     if(empty(trim($data->annee_crea))){ 
         $messages['annee_crea'] = "Année de création obligatoire";
     }
-
     if(empty(trim($data->presentation))){
         $messages['presentation'] = "Présentation du groupe obligatoire";
     } else if(strlen($data->presentation) < 20){
         $messages['presentation'] = "Veuillez nous en dire un peu plus svp";
     }
-
     if(empty(trim($data->exp))){
         $messages['exp'] = "Expérience scéniques du groupe obligatoire";
     } else if(strlen($data->exp) < 20){
         $messages['exp'] = "Veuillez nous en dire un peu plus svp";
     }
-
     if(empty(trim($data->network))){
         $messages['network'] = "Site ou page Facebook du groupe obligatoire";
     } else if(!filter_var($data->network, FILTER_VALIDATE_URL)){
         $messages['network'] = "Lien du groupe invalide";
     }
-
     if(!empty(trim($data->soundcloud)) && !filter_var($data->soundcloud, FILTER_VALIDATE_URL)){
         $messages['soundcloud'] = "Lien soundcloud invalide";
     }
-
     if(!empty(trim($data->ytb)) && !filter_var($data->ytb, FILTER_VALIDATE_URL)){
         $messages['ytb'] = "Lien youtube invalide";
     }
-
-
 
     $info = new SplFileInfo('foo.txt');
     var_dump($info->getExtension());
     // Il faut récupérer au lieu du foo.txt le fichier du candidat
 
-    
-
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $_SESSION['user'] = $data->mail;
+        $st = Flight::get('pdo')->prepare("INSERT INTO candidature VALUES(
+                               :nom_grp,:id_dep,:type_scene,:style_musical,:annee_de_creation,
+                               :presentation_du_texte,:experiences_sceniques,:url,:soundcloud_facult,:youtube_facult
+                               ,:statut_associatif, :inscrit_sacem, :producteur, )
+                               ");
+
+        $st->execute(array(
+            ':nom_grp'=>$data->nomgr,
+            ':id_dep'=>$data->dep,
+            ':type_scene'=>$data->scene,
+            ':style_musical' => $data->style,
+            ':annee_de_creation' => $data->annee_crea,
+            ':presentation_du_texte' => $data->presentation,
+            ':experiences_sceniques' => $data->exp
+        ));
         Flight::redirect('success');
         // Sinon (donc au moins un message d'erreur)
     } else {

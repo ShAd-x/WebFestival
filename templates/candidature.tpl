@@ -144,16 +144,20 @@
                 <input type="text" value="{$valeurs.representanttel|escape|default:''}" id="representanttel" name="representanttel" placeholder="Numéro du représentant"/>
                 <span>{$messages.representanttel|escape|default:''}</span>
 
+                <label for="style">Style musical* :</label>
+                <input type="text" value="{$valeurs.style|escape|default:''}" id="style" name="style" placeholder="Style musical du groupe"/>
+                <span>{$messages.style|escape|default:''}</span>
+
                 <label for="annee_crea">Année de création* :</label>
                 <input type="text" value="{$valeurs.annee_crea|escape|default:''}" id="annee_crea" name="annee_crea" placeholder="Année de création"/>
                 <span>{$messages.annee_crea|escape|default:''}</span>
 
                 <label for="presentation">Courte présentation* :</label>
-                <textarea required placeholder="{$valeurs.presentation|escape|default:''}" id="presentation" name="presentation" maxlength="500"></textarea>
+                <textarea required id="presentation" name="presentation" maxlength="500"></textarea>
                 <span>{$messages.presentation|escape|default:''}</span>
 
                 <label for="exp">Expérience scéniques* :</label>
-                <textarea required placeholder="{$valeurs.exp|escape|default:''}" id="exp" name="exp" maxlength="500"></textarea>
+                <textarea required id="exp" name="exp" maxlength="500"></textarea>
                 <span>{$messages.exp|escape|default:''}</span>
 
                 <label for="network">Site ou page Facebook :</label>
@@ -175,30 +179,24 @@
                 <span>{$messages.membre1|escape|default:''}</span>
 
                 <label for="stat_assoc">Statut associatif* :</label>
-                <div>
-                    <label for="oui">Oui</label>
-                    <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="oui" name="stat_assoc"/>
-                    <label for="non">Non</label>
-                    <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="non" name="stat_assoc"/>
-                </div>
+                <select name="stat_assoc">
+                    <option value=TRUE>Oui</option>
+                    <option value=FALSE>Non</option>
+                </select>
                 <span>{$messages.stat_assoc|escape|default:''}</span>
 
                 <label for="sacem">SACEM* :</label>
-                <div>
-                    <label for="oui">Oui</label>
-                    <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="oui" name="sacem"/>
-                    <label for="non">Non</label>
-                    <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="non" name="sacem"/>
-                </div>
+                <select name="sacem">
+                    <option value=TRUE>Oui</option>
+                    <option value=FALSE>Non</option>
+                </select>
                 <span>{$messages.sacem|escape|default:''}</span>
 
                 <label for="producteur">Producteur* :</label>
-                <div>
-                    <label for="oui">Oui</label>
-                    <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="oui" name="producteur"/>
-                    <label for="non">Non</label>
-                    <input type="radio" value="{$valeurs.stat_assoc|escape|default:''}" id="non" name="producteur"/>
-                </div>
+                <select name="producteur">
+                    <option value=TRUE>Oui</option>
+                    <option value=FALSE>Non</option>
+                </select>
                 <span>{$messages.producteur|escape|default:''}</span>
 
                 <label for="files">Fichiers mp3* :</label>
