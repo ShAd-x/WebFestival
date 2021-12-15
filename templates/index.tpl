@@ -3,6 +3,7 @@
 {block name=body}
 <div id='main'>
     <h1>Accueil</h1>
+    <div class="accueil">
     <p>Bienvenue sur le site du festival d'Amiens !</p>
     {if (isset($_session_))}
         <p>Pas encore inscris au festival ? Inscrivez vous dès maintenant !
@@ -27,5 +28,6 @@
             echo "</table>";
         }
     ?>
+    </div>
 </div>
 {/block}

@@ -1,7 +1,33 @@
 h1 {
-    color: red
+    color: red;
+    display: flex;
+    justify-content: center;
 }
 
 span {
     color: coral;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.formulaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2em;
+}
+
+.accueil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+label {
+    
+    padding-top: 2em;
 }
