@@ -131,11 +131,11 @@
                 <span>{$messages.annee_crea|escape|default:''}</span>
 
                 <label for="presentation">Courte présentation* :</label>
-                <textarea id="presentation" name="presentation" maxlength="500"></textarea>
+                <textarea required id="presentation" name="presentation" maxlength="500"></textarea>
                 <span>{$messages.presentation|escape|default:''}</span>
 
                 <label for="exp">Expérience scéniques* :</label>
-                <textarea id="exp" name="exp" maxlength="500"></textarea>
+                <textarea required id="exp" name="exp" maxlength="500"></textarea>
                 <span>{$messages.exp|escape|default:''}</span>
 
                 <label for="network">Site ou page Facebook :</label>
@@ -222,30 +222,43 @@
 
                 <label for="files">Fichiers mp3* :</label>
                 <div>
-                    <input type="file" value="{$valeurs.files|escape|default:''}" id="first_file" name="files" placeholder="Premier fichier"/>
-                    <input type="file" value="{$valeurs.files|escape|default:''}" id="second_file" name="files" placeholder="Deuxième fichier"/>
-                    <input type="file" value="{$valeurs.files|escape|default:''}" id="third_file" name="files" placeholder="Troisième fichier"/>
+                    <form action="envoi" method="post" enctype="multipart/form-data">
+                        <input name="mp3_1" type="file">
+                        <span>{$messages.mp3_1|escape|default:''}</span>
+                    <form action="envoi" method="post" enctype="multipart/form-data">
+                        <input name="mp3_2" type="file">
+                        <span>{$messages.mp3_2|escape|default:''}</span>
+                    <form action="envoi" method="post" enctype="multipart/form-data">
+                        <input name="mp3_3" type="file">
+                        <span>{$messages.mp3_3|escape|default:''}</span>
                 </div>
-                <span>{$messages.files|escape|default:''}</span>
+
               
                 <label for="dossier">Dossier de presse :</label>
-                <input type="file" value="{$valeurs.dossier|escape|default:''}" id="dossier" name="dossier"/>
-                <span>{$valeurs.dossier|escape|default:''}</span>
+                <form action="envoi" method="post" enctype="multipart/form-data">
+                    <input name="dossier" type="file">
+                    <span>{$messages.dossier|escape|default:''}</span>
 
                 <label for="photo_grp">Photo de groupe* :</label>
                 <div>
-                    <input type="file" value="{$valeurs.photo_grp|escape|default:''}" id="first_picture" name="photo_grp"/>
-                    <input type="file" value="{$valeurs.photo_grp|escape|default:''}" id="second_picture" name="photo_grp"/>
+                    <form action="envoi" method="post" enctype="multipart/form-data">
+                        <input name="pic_1" type="file">
+                        <span>{$messages.pic_1|escape|default:''}</span>
+                    <form action="envoi" method="post" enctype="multipart/form-data">
+                        <input name="pic_2" type="file">
+                        <span>{$messages.pic_2|escape|default:''}</span>
                 </div>
-                <span>{$messages.photo_grp|escape|default:''}</span>
+
 
                 <label for="tech_file">Fiche technique* :</label>
-                <input type="file" value="{$valeurs.tech_file|escape|default:''}" id="tech_file" name="tech_file"/>
-                <span>{$valeurs.tech_file|escape|default:''}</span>
+                <form action="envoi" method="post" enctype="multipart/form-data">
+                    <input name="tech_file" type="file">
+                    <span>{$messages.tech_file|escape|default:''}</span>
 
                 <label for="sacem_file">Document SACEM* :</label>
-                <input type="file" value="{$valeurs.sacem_file|escape|default:''}" id="sacem_file" name="sacem_file"/>
-                <span>{$valeurs.sacem_file|escape|default:''}</span>
+                <form action="envoi" method="post" enctype="multipart/form-data">
+                    <input name="sacem_file" type="file">
+                    <span>{$messages.sacem_file|escape|default:''}</span>
 
                 <br><br>
                 <button type="submit" class="pure-button pure-button-primary">Inscription du groupe</button>
