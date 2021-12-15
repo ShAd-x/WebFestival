@@ -21,6 +21,23 @@ Flight::route('POST /register', function(){
         $messages['prenom'] = "Prénom obligatoire";
     }
 
+    if(empty(trim($data->numero))){
+        $messages['numero'] = "Numéro obligatoire";
+    } else if(!is_numeric(trim($data->numero))){
+        $messages['numero'] = "Numero erroné";
+    }
+    if(empty(trim($data->codepostal))){
+        $messages['codepostal'] = "Code postal obligatoire";
+    } else if(!is_numeric(trim($data->codepostal))){
+        $messages['codepostal'] = "Code postal erroné";
+    } else if(strlen($data->codepostal) < 5){
+        $messages['codepostal'] = "Le code postal est trop court";
+    }
+
+    if(empty(trim($data->adresse))){
+        $messages['adresse'] = "Adresse obligatoire";
+    }
+
     // Si aucune adresse mail n'a été fourni
     if(empty(trim($data->mail))){
         $messages['mail'] = "Mail obligatoire";
@@ -46,19 +63,18 @@ Flight::route('POST /register', function(){
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         $st = Flight::get('pdo')->prepare("INSERT INTO utilisateur VALUES(
-                               id,:role,:idgroupe,:mail,:mdp,:nom,
+                               id,:role,idgroupe,:mail,:mdp,:nom,
                                :prenom,:adresse,:codepostal,:tel,:instruments)
                                ");
         $st -> execute(array(
             ':role'=>"candidat",
-            ':idgroupe'=>0,
             ':mail'=>$data->mail,
             ':mdp'=>password_hash($data->mdp, PASSWORD_DEFAULT),
             ':nom'=>$data->nom,
             ':prenom'=>$data->prenom,
-            ':adresse'=> '',
-            ':codepostal'=> -1,
-            ':tel'=> -1,
+            ':adresse'=> $data->adresse,
+            ':codepostal'=> $data->codepostal,
+            ':tel'=> $data->numero,
             ':instruments'=> ''
         ));
         // Redirection sur la page de confirmation
@@ -130,29 +146,13 @@ Flight::route('POST /candidature', function(){
     if(empty(trim($data->nomgr))){
         $messages['nomgr'] = "Nom du groupe obligatoire";
     }
-    if(empty(trim($data->representantnom))){
-        $messages['representantnom'] = "Nom du représentant obligatoire";
-    }
-    if(empty(trim($data->representantprenom))){
-        $messages['representantprenom'] = "Prénom du représentant obligatoire";
-    }
-    if(empty(trim($data->representantadresse))){
-        $messages['representantadresse'] = "Adresse du représentant obligatoire";
-    }
-    if(empty(trim($data->representantcodepostal))){
-        $messages['representantcodepostal'] = "Code postal du représentant obligatoire";
-    }
-    if(empty(trim($data->representantemail))){
-        $messages['representantemail'] = "Mail du représentant obligatoire";
-    }
-    if(empty(trim($data->representanttel))){
-        $messages['representanttel'] = "Numéro du représentant obligatoire";
-    }
     if(empty(trim($data->style))){
         $messages['style'] = "Style musical du groupe obligatoire";
     }
     if(empty(trim($data->annee_crea))){ 
         $messages['annee_crea'] = "Année de création obligatoire";
+    } else if(!is_numeric(trim($data->annee_crea))){
+        $messages['annee_crea'] = "Année de création invalide";
     }
     if(empty(trim($data->presentation))){
         $messages['presentation'] = "Présentation du groupe obligatoire";
@@ -176,27 +176,153 @@ Flight::route('POST /candidature', function(){
         $messages['ytb'] = "Lien youtube invalide";
     }
 
+    $checkCandid = Flight::get('pdo')->prepare("select * from candidature");
+    $nbCandid = $checkCandid->rowCount() + 1;
+
+    $addToUtilisateur = Flight::get('pdo')->prepare("INSERT INTO utilisateur VALUES(
+                               id,:role,:idgroupe,mail,mdp,:nom,
+                               :prenom,adresse,codepostal,tel,:instruments)
+                               ");
+
+    $getIdFromData = Flight::get('pdo')->prepare("SELECT id FROM utilisateur WHERE nom = :nom AND prenom = :prenom");
+    $getIdFromMail = Flight::get('pdo')->prepare("SELECT id FROM utilisateur WHERE mail = :mail");
+
+    if(empty(trim($data->membre1nom)) || empty(trim($data->membre1prenom)) || empty(trim($data->membre1instrument))){
+        $messages['membre1'] = "Membre 1 obligatoire";
+    } else {
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre1nom,
+            ':prenom'=>$data->membre1prenom,
+            ':instruments'=> $data->membre1instrument
+        ));
+    }
+    if(empty(trim($data->membre2nom)) || empty(trim($data->membre2prenom)) || empty(trim($data->membre2instrument))){
+        $messages['membre2'] = "Membre 2 obligatoire";
+    } else {
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre2nom,
+            ':prenom'=>$data->membre2prenom,
+            ':instruments'=> $data->membre2instrument
+        ));
+    }
+
+    if(!(empty(trim($data->membre3nom)) || empty(trim($data->membre3prenom)) || empty(trim($data->membre3instrument)))){
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre3nom,
+            ':prenom'=>$data->membre3prenom,
+            ':instruments'=> $data->membre3instrument
+        ));
+    }
+    if(!(empty(trim($data->membre4nom)) || empty(trim($data->membre4prenom)) || empty(trim($data->membre4instrument)))){
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre4nom,
+            ':prenom'=>$data->membre4prenom,
+            ':instruments'=> $data->membre4instrument
+        ));
+    }
+    if(!(empty(trim($data->membre5nom)) || empty(trim($data->membre5prenom)) || empty(trim($data->membre5instrument)))){
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre5nom,
+            ':prenom'=>$data->membre5prenom,
+            ':instruments'=> $data->membre5instrument
+        ));
+    }
+    if(!(empty(trim($data->membre6nom)) || empty(trim($data->membre6prenom)) || empty(trim($data->membre6instrument)))){
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre6nom,
+            ':prenom'=>$data->membre6prenom,
+            ':instruments'=> $data->membre6instrument
+        ));
+    }
+    if(!(empty(trim($data->membre7nom)) || empty(trim($data->membre7prenom)) || empty(trim($data->membre7instrument)))){
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre7nom,
+            ':prenom'=>$data->membre7prenom,
+            ':instruments'=> $data->membre7instrument
+        ));
+    }
+    if(!(empty(trim($data->membre8nom)) || empty(trim($data->membre8prenom)) || empty(trim($data->membre8instrument)))){
+        $addToUtilisateur -> execute(array(
+            ':role'=>"candidat",
+            ':idgroupe' => $nbCandid,
+            ':nom'=>$data->membre8nom,
+            ':prenom'=>$data->membre8prenom,
+            ':instruments'=> $data->membre8instrument
+        ));
+    }
+
     $info = new SplFileInfo('foo.txt');
     var_dump($info->getExtension());
     // Il faut récupérer au lieu du foo.txt le fichier du candidat
 
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
-        $_SESSION['user'] = $data->mail;
+        //ID NE MARCHE PAS. + RECUP ID MEMBRE > 2
+        $id1 = $getIdFromData -> execute(array(
+            ':nom' => $data->membre1nom,
+            ':prenom' => $data->membre1prenom
+        ));
+        $id2 = $getIdFromData -> execute(array(
+            ':nom' => $data->membre2nom,
+            ':prenom' => $data->membre2prenom
+        ));
+        $idRepresentant = $getIdFromMail -> execute(array(
+            ':mail' => $_SESSION['user']
+        ));
+
         $st = Flight::get('pdo')->prepare("INSERT INTO candidature VALUES(
-                               :nom_grp,:id_dep,:type_scene,:style_musical,:annee_de_creation,
-                               :presentation_du_texte,:experiences_sceniques,:url,:soundcloud_facult,:youtube_facult
-                               ,:statut_associatif, :inscrit_sacem, :producteur, )
+                               :nom_grp,:id_dep,:type_scene, :id_representant, :style_musical,:annee_de_creation,
+                               :presentation_du_texte,:experiences_sceniques,:url,:soundcloud_facult,:youtube_facult,
+                               :id_membre1, :id_membre2, :id_membre3, :id_membre4, :id_membre5, :id_membre6, :id_membre7, :id_membre8,
+                               :statut_associatif, :inscrit_sacem, :producteur, :id_fichier_mp3_1, :id_fichier_mp3_2, 
+                               :id_fichier_mp3_3, :dossier_de_presse, :photo_grp1, :photo_grp2, :fiche_technique, :document_sacem)
                                ");
 
         $st->execute(array(
             ':nom_grp'=>$data->nomgr,
-            ':id_dep'=>$data->dep,
-            ':type_scene'=>$data->scene,
+            ':id_dep'=> 0,
+            ':type_scene'=>'',
+            ':id_representant' => $idRepresentant,
             ':style_musical' => $data->style,
             ':annee_de_creation' => $data->annee_crea,
             ':presentation_du_texte' => $data->presentation,
-            ':experiences_sceniques' => $data->exp
+            ':experiences_sceniques' => $data->exp,
+            ':url' => ' ',
+            ':soundcloud_facult' => ' ',
+            ':youtube_facult' => ' ',
+            ':id_membre1' => $id1,
+            ':id_membre2' => $id2,
+            ':id_membre3' => 0,
+            ':id_membre4' => 0,
+            ':id_membre5' => 0,
+            ':id_membre6' => 0,
+            ':id_membre7' => 0,
+            ':id_membre8' => 0,
+            ':statut_associatif' => 0,
+            ':inscrit_sacem' => 0,
+            ':producteur' => 0,
+            ':id_fichier_mp3_1' => 0,
+            ':id_fichier_mp3_2' => 0,
+            ':id_fichier_mp3_3' => 0,
+            ':dossier_de_presse' => ' ',
+            ':photo_grp1' => 0,
+            ':photo_grp2' => 0,
+            ':fiche_technique' => ' ',
+            ':document_sacem' => ' '
         ));
         Flight::redirect('success');
         // Sinon (donc au moins un message d'erreur)
