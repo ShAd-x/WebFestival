@@ -17,5 +17,15 @@
     {/if}
     <br><br>
     <p>Les candidatures déjà déposées :</p>
+    <?php
+        $checkCandid = Flight::get('pdo')=prepare("select * from candidature");
+        if($checkCandid=rowCount() == 0){
+            echo "Il n'y a aucune candidature de déposée.";
+        } else {
+            echo "<table>";
+
+            echo "</table>";
+        }
+    ?>
 </div>
 {/block}
