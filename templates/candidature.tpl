@@ -16,7 +16,7 @@
                     <span>{$messages.nomgr|escape|default:''}</span>
 
                     <label for="departement">Département* :</label>
-                    <select>
+                    <select name="departement">
                         <option value="1">1 - Ain</option>
                         <option value="2">2 - Aisne</option>
                         <option value="3">3 - Allier</option>
@@ -117,7 +117,7 @@
                     </select>
 
                     <label for="type">Type de scène* :</label>
-                    <select>
+                    <select name="type">
                         <option value="1">1 - Tribute</option>
                         <option value="2">2 - Acoustique/Folk</option>
                         <option value="3">3 - Amplifié/Rock</option>
@@ -165,39 +165,39 @@
                     <span>{$messages.membre2|escape|default:''}</span>
 
                     <label for="membre3">Troisième membre du groupe :</label>
-                    <input type="text" id="membre3nom" name="membre3nom" placeholder="Nom du membre"/>
-                    <input type="text" id="membre3prenom" name="membre3prenom" placeholder="Prénom du membre"/>
-                    <input type="text" id="membre3instrument" name="membre3instrument" placeholder="Instrument du membre"/>
+                    <input type="text" value="{$valeurs.membre3nom|escape|default:''}" id="membre3nom" name="membre3nom" placeholder="Nom du membre"/>
+                    <input type="text" value="{$valeurs.membre3prenom|escape|default:''}" id="membre3prenom" name="membre3prenom" placeholder="Prénom du membre"/>
+                    <input type="text" value="{$valeurs.membre3instrument|escape|default:''}" id="membre3instrument" name="membre3instrument" placeholder="Instrument du membre"/>
                     <span>{$messages.membre3|escape|default:''}</span>
 
                     <label for="membre4">Quatrième membre du groupe :</label>
-                    <input type="text" id="membre4nom" name="membre4nom" placeholder="Nom du membre"/>
-                    <input type="text" id="membre4prenom" name="membre4prenom" placeholder="Prénom du membre"/>
-                    <input type="text" id="membre4instrument" name="membre4instrument" placeholder="Instrument du membre"/>
+                    <input type="text" value="{$valeurs.membre4nom|escape|default:''}" id="membre4nom" name="membre4nom" placeholder="Nom du membre"/>
+                    <input type="text" value="{$valeurs.membre4prenom|escape|default:''}" id="membre4prenom" name="membre4prenom" placeholder="Prénom du membre"/>
+                    <input type="text" value="{$valeurs.membre4instrument|escape|default:''}" id="membre4instrument" name="membre4instrument" placeholder="Instrument du membre"/>
                     <span>{$messages.membre4|escape|default:''}</span>
 
                     <label for="membre5">Cinquième membre du groupe :</label>
-                    <input type="text" id="membre5nom" name="membre5nom" placeholder="Nom du membre"/>
-                    <input type="text" id="membre5prenom" name="membre5prenom" placeholder="Prénom du membre"/>
-                    <input type="text" id="membre5instrument" name="membre5instrument" placeholder="Instrument du membre"/>
+                    <input type="text" value="{$valeurs.membre5nom|escape|default:''}" id="membre5nom" name="membre5nom" placeholder="Nom du membre"/>
+                    <input type="text" value="{$valeurs.membre5prenom|escape|default:''}" id="membre5prenom" name="membre5prenom" placeholder="Prénom du membre"/>
+                    <input type="text" value="{$valeurs.membre5instrument|escape|default:''}" id="membre5instrument" name="membre5instrument" placeholder="Instrument du membre"/>
                     <span>{$messages.membre5|escape|default:''}</span>
 
                     <label for="membre6">Sixième membre du groupe :</label>
-                    <input type="text" id="membre6nom" name="membre6nom" placeholder="Nom du membre"/>
-                    <input type="text" id="membre6prenom" name="membre6prenom" placeholder="Prénom du membre"/>
-                    <input type="text" id="membre6instrument" name="membre6instrument" placeholder="Instrument du membre"/>
+                    <input type="text" value="{$valeurs.membre6nom|escape|default:''}" id="membre6nom" name="membre6nom" placeholder="Nom du membre"/>
+                    <input type="text" value="{$valeurs.membre6prenom|escape|default:''}" id="membre6prenom" name="membre6prenom" placeholder="Prénom du membre"/>
+                    <input type="text" value="{$valeurs.membre6instrument|escape|default:''}" id="membre6instrument" name="membre6instrument" placeholder="Instrument du membre"/>
                     <span>{$messages.membre6|escape|default:''}</span>
 
                     <label for="membre7">Septième membre du groupe :</label>
-                    <input type="text" id="membre7nom" name="membre7nom" placeholder="Nom du membre"/>
-                    <input type="text" id="membre7prenom" name="membre7prenom" placeholder="Prénom du membre"/>
-                    <input type="text" id="membre7instrument" name="membre7instrument" placeholder="Instrument du membre"/>
+                    <input type="text" value="{$valeurs.membre7nom|escape|default:''}" id="membre7nom" name="membre7nom" placeholder="Nom du membre"/>
+                    <input type="text" value="{$valeurs.membre7prenom|escape|default:''}" id="membre7prenom" name="membre7prenom" placeholder="Prénom du membre"/>
+                    <input type="text" value="{$valeurs.membre7instrument|escape|default:''}" id="membre7instrument" name="membre7instrument" placeholder="Instrument du membre"/>
                     <span>{$messages.membre7|escape|default:''}</span>
 
                     <label for="membre8">Huitième membre du groupe :</label>
-                    <input type="text" id="membre8nom" name="membre8nom" placeholder="Nom du membre"/>
-                    <input type="text" id="membre8prenom" name="membre8prenom" placeholder="Prénom du membre"/>
-                    <input type="text" id="membre8instrument" name="membre8instrument" placeholder="Instrument du membre"/>
+                    <input type="text" value="{$valeurs.membre8nom|escape|default:''}" id="membre8nom" name="membre8nom" placeholder="Nom du membre"/>
+                    <input type="text" value="{$valeurs.membre8prenom|escape|default:''}" id="membre8prenom" name="membre8prenom" placeholder="Prénom du membre"/>
+                    <input type="text" value="{$valeurs.membre8instrument|escape|default:''}" id="membre8instrument" name="membre8instrument" placeholder="Instrument du membre"/>
                     <span>{$messages.membre8|escape|default:''}</span>
 
                     <label for="stat_assoc">Statut associatif* :</label>
