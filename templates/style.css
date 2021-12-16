@@ -27,6 +27,10 @@ form {
     justify-content: center;
 }
 
+.index :hover {
+    color: red;
+}
+
 label {
     
     padding-top: 2em;

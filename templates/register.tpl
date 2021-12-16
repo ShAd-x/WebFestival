@@ -7,7 +7,7 @@
     <fieldset>
         <legend>Inscription</legend>
 
-        <p>Les champs marqué d'une '*' sont obligatoires</p>
+        <p>Les champs marqués d'une '*' sont obligatoires</p>
 
         <label for="name">Nom* :</label>
         <input type="text" value="{$valeurs.nom|escape|default:''}" id="name" name="nom" placeholder="Nom"/>

@@ -11,14 +11,16 @@
 </head>
 <body>
     {block name=menu}
-    <a href='./'>Accueil</a>
-    {if (isset($_session_))}
-        <a href='candidature'>Candidature</a>
-        <a href='logout'>Déconnexion</a>
-    {else}
-        <a href='register'>Inscription</a>
-        <a href='login'>Connexion</a>
-    {/if}
+    <div class="index">
+        <a href='./'>Accueil</a>
+        {if (isset($_session_))}
+            <a href='candidature'>Candidature</a>
+            <a href='logout'>Déconnexion</a>
+        {else}
+            <a href='register'>Inscription</a>
+            <a href='login'>Connexion</a>
+        {/if}
+    </div>
     {/block}
     {block name=body}
     <p>Votre inscription s'est bien déroulée</p>
