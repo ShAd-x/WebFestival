@@ -10,10 +10,8 @@
             <a href="candidature">S'inscrire au festival</a>
         </p>
     {else}
-        <p>Vous souhaitez participer au festival ?
-            <a href="register">S'inscrire</a>
-            ou
-            <a href="login">Se connecter</a>
+        <p class="index">
+            Vous souhaitez participer au festival ? <a href="register">S'inscrire</a> ou <a href="login">Se connecter</a>
         </p>
     {/if}
     <br><br>
