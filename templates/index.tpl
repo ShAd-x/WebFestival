@@ -15,17 +15,18 @@
         </p>
     {/if}
     <br><br>
-    <p>Les candidatures déjà déposées :</p>
-    <?php
-        $checkCandid = Flight::get('pdo')=prepare("select * from candidature");
-        if($checkCandid=rowCount() == 0){
-            echo "Il n'y a aucune candidature de déposée.";
-        } else {
-            echo "<table>";
-
-            echo "</table>";
-        }
-    ?>
+    {if (isset($_session_))}
+    <p>Les candidatures déjà déposées ({count($candidature)} candidature(s)) :</p>
+    <table style="border: 1px solid black">
+    <thead><tr><th>Candidatures :</th></tr></thead>
+    <tbody>
+    <tr><td>Nom du groupe</td><td>Département</td><td>Style Musical</td><td>Année de création</td><td>Lien vers cette candidature</td></tr>
+    {foreach from=$candidature item=candid}
+        <tr><td>{$candid[0]}</td><td>{$candid[1]}</td><td>{$candid[4]}</td><td>{$candid[5]}</td><td><a href="./candidature-{$candid[0]}">Candidature {$candid[0]}</a></td></tr>
+    {/foreach}
+    </tbody>
+    </table>
+    {/if}
     </div>
 </div>
 {/block}

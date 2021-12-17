@@ -224,13 +224,11 @@
                     <label for="files">Fichiers mp3* :</label>
                     <div>
                         <form action="envoi" method="post" enctype="multipart/form-data">
-                            <input name="mp3_1" type="file">
+                            <input name="mp3_1" value="{$valeurs.mp3_1|escape|default:''}" type="file">
                             <span>{$messages.mp3_1|escape|default:''}</span>
-                        <form action="envoi" method="post" enctype="multipart/form-data">
-                            <input name="mp3_2" type="file">
+                            <input name="mp3_2" value="{$valeurs.mp3_2|escape|default:''}" type="file">
                             <span>{$messages.mp3_2|escape|default:''}</span>
-                        <form action="envoi" method="post" enctype="multipart/form-data">
-                            <input name="mp3_3" type="file">
+                            <input name="mp3_3" value="{$valeurs.mp3_3|escape|default:''}" type="file">
                             <span>{$messages.mp3_3|escape|default:''}</span>
                     </div>
 

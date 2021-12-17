@@ -1,11 +1,25 @@
 <?php
 
 Flight::route('/', function(){
-    Flight::render("index.tpl",array());
+    if(isset($_SESSION['user'])) {
+        $getCandid = Flight::get('pdo')->prepare("select * from candidature");
+        $getCandid->execute();
+        $candidature = array();
+        while($in = $getCandid->fetch(PDO::FETCH_NUM)){
+            $candidature[] = $in;
+        }
+        Flight::render("index.tpl",array("candidature" => $candidature));
+    } else {
+        Flight::render("index.tpl",array());
+    }
 });
 
 Flight::route('GET /register', function(){
-    Flight::render("register.tpl",array());
+    if(isset($_SESSION['user'])) {
+        Flight::redirect('./');
+    } else {
+        Flight::render("register.tpl",array());
+    }
 });
 
 Flight::route('POST /register', function(){
@@ -89,7 +103,11 @@ Flight::route('POST /register', function(){
 });
 
 Flight::route('GET /login', function(){
-    Flight::render("login.tpl",array());
+    if(isset($_SESSION['user'])) {
+        Flight::redirect('./');
+    } else {
+        Flight::render("login.tpl",array());
+    }
 });
 
 Flight::route('POST /login', function() {
@@ -182,10 +200,10 @@ Flight::route('POST /candidature', function(){
     $nbCandid = $checkCandid->rowCount() + 1;
 
     $addToUtilisateur = Flight::get('pdo')->prepare("INSERT INTO utilisateur VALUES(
-                               id,:role,:idgroupe,mail,mdp,:nommembre,
+                               id,:role,:idgroupe,mail,mdp,:nom,
                                :prenom,adresse,codepostal,tel,:instruments)
                                ");
-    $getRespID = Flight::get('pdo')->prepare("SELECT id FROM utilisateur WHERE mail like :mail");
+    $getRespID = Flight::get('pdo')->prepare("SELECT id FROM utilisateur WHERE mail = :mail");
     $nbMembres = 0;
     if(empty(trim($data->membre1nom)) || empty(trim($data->membre1prenom)) || empty(trim($data->membre1instrument))){
         $messages['membre1'] = "Membre 1 obligatoire";
@@ -221,51 +239,51 @@ Flight::route('POST /candidature', function(){
     var_dump($info->getExtension());
     // Il faut récupérer au lieu du foo.txt le fichier du candidat
 
-    /*for ($i = 1; $i <= 3; $i++) {
-        if (empty(trim($_FILES["mp3_$i"]["name"]))) { $messages["mp3_$i"] = "Fichier manquant";}
+    for ($i = 1; $i <= 3; $i++) {
+        if (empty(trim($files->mp3_.$i))) { $messages["mp3_$i"] = "Fichier manquant";}
     }
     for ($i = 1; $i <= 2; $i++){
-        if(empty(trim($_FILES["pic_$i"]["name"]))) {$messages["pic_$i"] = "Fichier manquant";}
+        if(empty(trim($files->pic_.$i))) {$messages["pic_$i"] = "Fichier manquant";}
     }
 
-    if(empty(trim($_FILES["tech_file"]["name"]))) {
+    /*if(empty(trim($files->tech_file))){
         $messages["tech_file"] = "Fichier manquant";
     }
-    if(empty(trim($_FILES["sacem_file"]["name"]))) {
+    if(empty(trim($files->sacem_file))) {
         $messages["sacem_file"] = "Fichier manquant";
     }*/
     // S'il n'y a aucun message d'erreur
     if(count($messages) <= 0){
         /*for ($i = 1; $i <= 3; $i++){
-            if (pathinfo($_FILES["mp3_$i"]["name"], PATHINFO_EXTENSION) == "mp3") {
-                $nom_fichier = bin2hex(random_bytes(18)) . "-" . $_FILES["mp3_$i"]["name"];
+            if (pathinfo($_FILES["mp3_$i"]['name'], PATHINFO_EXTENSION) == "mp3") {
+                $nom_fichier = bin2hex(random_bytes(18)) . "-" . $files->mp3_.$i['name'];
                 move_uploaded_file($_FILES["mp3_$i"]["tmp_name"], "./uploads/mp3/" . $nom_fichier);
                 $nom_fichiers["mp3_$i"] = $nom_fichier;
             } else { $messages["mp3_$i"] = "Format incorrect (mp3)"; }
         }
 
-        if (pathinfo($_FILES["dossier"]["name"], PATHINFO_EXTENSION) == "pdf") {
-            $nom_fichier = bin2hex(random_bytes(18)) . "-" . $_FILES["dossier"]["name"];
+        if (pathinfo($files->dossier, PATHINFO_EXTENSION) == "pdf") {
+            $nom_fichier = bin2hex(random_bytes(18)) . "-" . $files->dossier;
             move_uploaded_file($_FILES["dossier"]["tmp_name"], "./uploads/DossiersPresse/" . $nom_fichier);
             $nom_fichiers["dossier"] = $nom_fichier;
         } else { $messages["dossier"] = "Format incorrect (pdf)"; }
 
         for ($i = 1; $i <= 2; $i++){
-            if (in_array(pathinfo($_FILES["pic_$i"]["name"], PATHINFO_EXTENSION), array("png", "jpg", "jpeg"))) {
-                $nom_fichier = bin2hex(random_bytes(18)) . "-" . $_FILES["pic_$i"]["name"];
+            if (in_array(pathinfo($files->pic_.$i, PATHINFO_EXTENSION), array("png", "jpg", "jpeg"))) {
+                $nom_fichier = bin2hex(random_bytes(18)) . "-" . $files->pic_.$i;
                 move_uploaded_file($_FILES["pic_$i"]["tmp_name"], "./uploads/Photos/" . $nom_fichier);
                 $nom_fichiers["pic_$i"] = $nom_fichier;
             } else { $messages["pic_$i"] = "Format incorrect (jpg ou png)"; }
         }
 
-        if (pathinfo($_FILES["tech_file"]["name"], PATHINFO_EXTENSION) == "pdf") {
-            $nom_fichier = bin2hex(random_bytes(18)) . "-" . $_FILES["tech_file"]["name"];
+        if (pathinfo($files->tech_file, PATHINFO_EXTENSION) == "pdf") {
+            $nom_fichier = bin2hex(random_bytes(18)) . "-" . $files->tech_file;
             move_uploaded_file($_FILES["tech_file"]["tmp_name"], "./uploads/FicheTechnique/" . $nom_fichier);
             $nom_fichiers["tech_file"] = $nom_fichier;
         } else { $messages["tech_file"] = "Format incorrect (pdf)"; }
 
-        if (pathinfo($_FILES["sacem_file"]["name"], PATHINFO_EXTENSION) == "pdf"){
-            $nom_fichier = bin2hex(random_bytes(18)) . "-" . $_FILES["sacem_file"]["name"];
+        if (pathinfo($files->sacem_file, PATHINFO_EXTENSION) == "pdf"){
+            $nom_fichier = bin2hex(random_bytes(18)) . "-" . $files->sacem_file;
             move_uploaded_file($_FILES["sacem_file"]["tmp_name"] , "./uploads/SACEM/" . $nom_fichier);
             $nom_fichiers["sacem_file"] = $nom_fichier;
         } else { $messages["sacem_file"] = "Format incorrect (pdf)"; }*/
@@ -282,7 +300,7 @@ Flight::route('POST /candidature', function(){
                 ':nom_grp' => $data->nomgr,
                 ':id_dep' => $data->departement,
                 ':type_scene' => $data->type,
-                ':id_representant' => $getRespID->execute(array(':mail'=>trim($_SESSION['user']))),
+                ':id_representant' => $getRespID->execute(array(':mail'=>$_SESSION['user'])),
                 ':style_musical' => $data->style,
                 ':annee_de_creation' => $data->annee_crea,
                 ':presentation_du_texte' => $data->presentation,
@@ -301,25 +319,37 @@ Flight::route('POST /candidature', function(){
                 ':statut_associatif' => $_POST["stat_assoc"] ? 1 : 0,
                 ':inscrit_sacem' => $_POST["sacem"] ? 1 : 0,
                 ':producteur' => $_POST["producteur"] ? 1 : 0,
-                //':id_fichier_mp3_1' => 0,//$nom_fichiers["mp3_1"],
-                //':id_fichier_mp3_2' => 0,//$nom_fichiers["mp3_2"],
-                //':id_fichier_mp3_3' => 0,//$nom_fichiers["mp3_3"],
-                //':dossier_de_presse' => " ",///$nom_fichiers["dossier"],
-                //':photo_grp1' => 0,//$nom_fichiers["pic_1"],
-                //':photo_grp2' => 0,//$nom_fichiers["pic_2"],
-                //':fiche_technique' => " ",//$nom_fichiers["tech_file"],
-                //':document_sacem' => " "///$nom_fichiers["sacem_file"],
+                /*':id_fichier_mp3_1' => $nom_fichiers["mp3_1"],
+                ':id_fichier_mp3_2' => $nom_fichiers["mp3_2"],
+                ':id_fichier_mp3_3' => $nom_fichiers["mp3_3"],
+                ':dossier_de_presse' => $nom_fichiers["dossier"],
+                ':photo_grp1' => $nom_fichiers["pic_1"],
+                ':photo_grp2' => $nom_fichiers["pic_2"],
+                ':fiche_technique' => $nom_fichiers["tech_file"],
+                ':document_sacem' => $nom_fichiers["sacem_file"]*/
             ));
+            $testDep = Flight::get('pdo')->prepare("select numero from département where numero = :recherche");
+            $testDep->execute(array(':recherche' => $data->departement));
+            if ($testDep->fetch(PDO::FETCH_NUM) == 0) {
+                $ajoutDep = Flight::get('pdo')->prepare("INSERT INTO département VALUES(:numero, departement)");
+                $ajoutDep->execute(array(':numero' => $data->departement));
+            }
+            /*
             for ($i = 0; $i < $nbMembres; $i++) {
                 $addToUtilisateur->execute(array(
                     ':role' => "candidat",
                     ':idgroupe' => $nbCandid,
-                    ':nommembre' => $data->membre . $i . nom,
-                    ':prenom' => $data->membre . $i . prenom,
-                    ':instruments' => $data->membre . $i . instrument
+                    ':nom' => $data->membre.$i.nom,
+                    ':prenom' => $data->membre.$i.prenom,
+                    ':instruments' => $data->membre.$i.instrument
                 ));
-            }
-            Flight::redirect('success');
+            }*/
+            Flight::redirect('candidaturesuccess');
+        } else {
+            Flight::render("candidature.tpl", array(
+                'messages' => $messages,
+                'valeurs' => $_POST
+            ));
         }
     // Sinon (donc au moins un message d'erreur)
     } else {
@@ -340,5 +370,23 @@ Flight::route('GET /candidature', function(){
 
 Flight::route('GET /success', function(){
     Flight::render("success.tpl",array());
+});
+
+Flight::route('GET /candidaturesuccess', function(){
+    Flight::render("candidaturesuccess.tpl",array());
+});
+
+Flight::route('GET /candidature-@nom', function($nom){
+    if(isset($_SESSION['user'])) { // Check si admin
+        $getCandid = Flight::get('pdo')->prepare("select * from candidature where nom_grp = :nom");
+        $getCandid->execute(array(':nom' => $nom));
+        $candidature = array();
+        while($in = $getCandid->fetch(PDO::FETCH_NUM)){
+            $candidature[] = $in;
+        }
+        Flight::render("fichecandid.tpl",array("candidature"=>$candidature[0], "nom"=>$nom));
+    } else {
+        Flight::redirect("/login");
+    }
 });
 ?>
