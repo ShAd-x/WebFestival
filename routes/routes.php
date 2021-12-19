@@ -180,9 +180,8 @@ Flight::route('GET /logout', function(){
 });
 
 Flight::route('POST /candidature', function(){
-    print_r($_POST);
     $data = Flight::request()->data;
-    $files = Flight::request()->files['id'];
+    //$files = Flight::request()->files['id']; // Pas réussi à l'utiliser
     $messages = array();
 
     if(empty(trim($data->nomgr))){
@@ -218,25 +217,17 @@ Flight::route('POST /candidature', function(){
         $messages['ytb'] = "Lien youtube invalide";
     }
 
-    $checkCandid = Flight::get('pdo')->prepare("select * from candidature");
-
-    /*$addToUtilisateur = Flight::get('pdo')->prepare("INSERT INTO utilisateur VALUES(
+    $addToUtilisateur = Flight::get('pdo')->prepare("INSERT INTO utilisateur VALUES(
                                id,:role,:idgroupe,mail,mdp,:nom,
                                :prenom,adresse,codepostal,tel,:instruments)
                                ");
-    $nbMembres = 0;
-    for ($i = 0; $i < 2; $i++) {
-        if(empty(trim($data->membrenom.$i)) || empty(trim($data->membreprenom.$i)) || empty(trim($data->membreinstrument.$i))){
-            $messages['membre'] = "Membre obligatoire";
-        } else {
-            $nbMembres++;
-        }
+
+    if(empty(trim($data->membrenom1)) || empty(trim($data->membreprenom1)) || empty(trim($data->membreinstrument1))){
+        $messages['membre1'] = "Membre 1 obligatoire";
     }
-    for ($i = 2; $i < 8; $i++) {
-        if (!(empty(trim($data->membrenom . $i)) || empty(trim($data->membreprenom . $i)) || empty(trim($data->membreinstrument . $i)))) {
-            $nbMembres++;
-        }
-    }*/
+    if(empty(trim($data->membrenom2)) || empty(trim($data->membreprenom2)) || empty(trim($data->membreinstrument2))){
+        $messages['membre2'] = "Membre 2 obligatoire";
+    }
 
     if (empty(trim($data->mp3_1))) { $messages["mp3_1"] = "Fichier manquant";}
     if (empty(trim($data->mp3_2))) { $messages["mp3_2"] = "Fichier manquant";}
@@ -288,7 +279,7 @@ Flight::route('POST /candidature', function(){
             $nom_fichier = bin2hex(random_bytes(5)) . "-" . $data->pic_2;
             move_uploaded_file($data->pic_2, "./uploads/Photos/" . $nom_fichier);
             $nom_fichiers["pic_2"] = $nom_fichier;
-        } else { $messages["pic_2"] = "Format incorrect (jpg ou png)"; }
+        } else { $messages["pic_2"] = "Format incorrect (png, jpg ou jpeg)"; }
 
         if (pathinfo($data->tech_file, PATHINFO_EXTENSION) == "pdf") {
             $nom_fichier = bin2hex(random_bytes(5)) . "-" . $data->tech_file;
@@ -352,6 +343,83 @@ Flight::route('POST /candidature', function(){
                     ':departement' => $namedep
                     ));
             }
+            $modifGroupe = Flight::get('pdo')->prepare("UPDATE utilisateur SET idgroupe = :groupe WHERE id = :id");
+            $modifGroupe->execute(array(
+                ':groupe' => $_SESSION['id'],
+                ':id' => $_SESSION['id']
+            ));
+            if(!(empty(trim($data->membrenom1)) || empty(trim($data->membreprenom1)) || empty(trim($data->membreinstrument1)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom1,
+                    ':prenom' => $data->membreprenom1,
+                    ':instruments' => $data->membreinstrument1
+                ));
+            }
+            if(!(empty(trim($data->membrenom2)) || empty(trim($data->membreprenom2)) || empty(trim($data->membreinstrument2)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom2,
+                    ':prenom' => $data->membreprenom2,
+                    ':instruments' => $data->membreinstrument2
+                ));
+            }
+            if(!(empty(trim($data->membrenom3)) || empty(trim($data->membreprenom3)) || empty(trim($data->membreinstrument3)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom3,
+                    ':prenom' => $data->membreprenom3,
+                    ':instruments' => $data->membreinstrument3
+                ));
+            }
+            if(!(empty(trim($data->membrenom4)) || empty(trim($data->membreprenom4)) || empty(trim($data->membreinstrument4)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom4,
+                    ':prenom' => $data->membreprenom4,
+                    ':instruments' => $data->membreinstrument4
+                ));
+            }
+            if(!(empty(trim($data->membrenom5)) || empty(trim($data->membreprenom5)) || empty(trim($data->membreinstrument5)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom5,
+                    ':prenom' => $data->membreprenom5,
+                    ':instruments' => $data->membreinstrument5
+                ));
+            }
+            if(!(empty(trim($data->membrenom6)) || empty(trim($data->membreprenom6)) || empty(trim($data->membreinstrument6)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom6,
+                    ':prenom' => $data->membreprenom6,
+                    ':instruments' => $data->membreinstrument6
+                ));
+            }
+            if(!(empty(trim($data->membrenom7)) || empty(trim($data->membreprenom7)) || empty(trim($data->membreinstrument7)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom7,
+                    ':prenom' => $data->membreprenom7,
+                    ':instruments' => $data->membreinstrument7
+                ));
+            }
+            if(!(empty(trim($data->membrenom8)) || empty(trim($data->membreprenom8)) || empty(trim($data->membreinstrument8)))){
+                $addToUtilisateur->execute(array(
+                    ':role' => "candidat",
+                    ':idgroupe' => $_SESSION['id'],
+                    ':nom' => $data->membrenom8,
+                    ':prenom' => $data->membreprenom8,
+                    ':instruments' => $data->membreinstrument8
+                ));
+            }
             /*for ($i = 0; $i < $nbMembres; $i++) {
                 $addToUtilisateur->execute(array(
                     ':role' => "candidat",
@@ -379,13 +447,13 @@ Flight::route('POST /candidature', function(){
 
 Flight::route('GET /candidature', function(){
     if(isset($_SESSION['user'])) {
-        /*$test = Flight::get('pdo')->prepare("select * from candidature where id_representant like :recherche");
+        $test = Flight::get('pdo')->prepare("select * from candidature where id_representant like :recherche");
         $test->execute(array(':recherche' => $_SESSION['id']));
         if ($test->rowCount() != 0) {
             Flight::redirect('/alreadycandid');
-        } else {*/
-        Flight::render("candidature.tpl", array());
-        //}
+        } else {
+            Flight::render("candidature.tpl", array());
+        }
     } else {
         Flight::redirect('/register');
     }

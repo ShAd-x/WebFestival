@@ -38,6 +38,7 @@
             <td>{$membre[7]}</td>
             <td>{$membre[8]}</td>
             <td>{$membre[9]}</td>
+            <td>{$membre[10]}</td>
         </tr>
         {/foreach}
         </tbody>
