@@ -1,7 +1,7 @@
 {extends file='success.tpl'}
 <html>
 <head>
-    <title>{block name=title}Listes des membres :{/block}</title>
+    <title>{block name=title}Listes des candidatures :{/block}</title>
     {block name=head}
         <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
         <style>
