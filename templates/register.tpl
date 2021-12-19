@@ -7,6 +7,8 @@
     <fieldset>
         <legend>Inscription</legend>
 
+        <p>Déjà un compte ? <a href="./login">Connexion</a></p>
+
         <p>Les champs marqués d'une '*' sont obligatoires</p>
 
         <label for="name">Nom* :</label>

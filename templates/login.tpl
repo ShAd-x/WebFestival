@@ -2,10 +2,12 @@
 {block name=title}Login{/block}
 {block name=body}
 <div id='main'>
-<h1>Login</h1>
+<h1>Connexion</h1>
 <form class="pure-form pure-form-stacked" action="login" method="post">
     <fieldset>
         <legend>Connexion</legend>
+
+        <p>Pas de compte ? <a href="./register">Inscription</a></p>
 
         <label for="stacked-email">Email :</label>
         <input type="email" value="{$valeurs.mail|escape|default:''}" id="stacked-email" name="mail" placeholder="Email"/>

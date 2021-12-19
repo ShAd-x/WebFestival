@@ -15,6 +15,10 @@
         <a href='./'>Accueil</a>
         {if (isset($_session_))}
             <a href='candidature'>Candidature</a>
+            {if (isset($_admin_))}
+                <a href='listecandidature'>Liste des candidatures</a>
+                <a href='listemembre'>Liste des membres</a>
+            {/if}
             <a href='logout'>Déconnexion</a>
         {else}
             <a href='register'>Inscription</a>
